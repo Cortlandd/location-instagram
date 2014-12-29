@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Engagr | Photo Search</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container"> 
+  <header class="clearfix">
+    <h1>Engagr <span>Find all Instagram Photos of a given Location <i class="fa fa-search" style="color: #c0392b;"></i></span></h1>
+
+    <form action="?" method="get">
+      <input type="text" name="q" placeholder="e.g. Brooklyn, New York  " autofocus/>
+    </form>
+
+  </header>
+  <div class="main">
+    
+    <%= yield %>
+
+  </div><!-- /main -->
+</div><!-- /container -->
+
+
+<ul id="og-grid" class="og-grid">
+
+<% @results.each do |instagram| %>
+  
+  <% if instagram.caption %>
+    <% caption = instagram.caption.text %>
+  <% end %>
+  <li>
+    <a href="<%= instagram.link %>" data-largesrc="<%= instagram.images.standard_resolution.url %>" data-title="@<%= instagram.user.username %>" data-description="<%= caption %>">
+      <%= image_tag instagram.images.low_resolution.url %>
+    </a>
+  </li>
+
+<% end %>
+</ul>
+
+</body>
+</html>
