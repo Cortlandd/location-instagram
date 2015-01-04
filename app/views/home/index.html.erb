@@ -33,7 +33,7 @@
     <% caption = instagram.caption.text %>
   <% end %>
   <li>
-    <a href="<%= instagram.link %>" data-largesrc="<%= instagram.images.standard_resolution.url %>" data-title="@<%= instagram.user.username %>" data-description="<%= caption %>">
+    <a href="<%= instagram.link %>" data-largesrc="<%= instagram.images.standard_resolution.url %>" data-title="@<%= instagram.user.username %>" data-description="<%= caption %>" target="_blank">
       <%= image_tag instagram.images.low_resolution.url %>
     </a>
   </li>
